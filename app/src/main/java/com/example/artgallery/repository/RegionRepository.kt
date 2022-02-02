@@ -19,5 +19,4 @@ constructor(private val apiService: ApiService) {
         departments
     }
 
-
 }

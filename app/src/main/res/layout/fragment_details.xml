@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/AliceBlue"
     tools:context=".ui.fragments.HomeFragment">
 
     <ImageView
@@ -24,7 +25,7 @@
         app:layout_constraintVertical_bias="0.05" />
 
     <ImageView
-        android:id="@+id/CoatIV"
+        android:id="@+id/coatIV"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
@@ -65,7 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagIV"
         app:layout_constraintVertical_bias="0.15"
-        android:background="@drawable/details_bg">
+        android:background="@drawable/continent_bg">
 
         <ImageView
             android:id="@+id/imageView"

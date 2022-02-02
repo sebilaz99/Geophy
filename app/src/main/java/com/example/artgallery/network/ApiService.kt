@@ -1,12 +1,13 @@
 package com.example.artgallery.network
 
-import com.example.artgallery.model.ContinentItem
 import com.example.artgallery.model.Country
-import com.example.artgallery.model.CountryItem
+import dagger.Binds
+import dagger.Module
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
+
 
 interface ApiService {
 
@@ -25,7 +26,7 @@ interface ApiService {
     @GET("region/oceania")
     suspend fun getOceania(): Response<List<Country>>
 
-//    @GET("alpha/{tld}")
-//    suspend fun getCountry(@Path("alpha") tld: String): Response<Country>
+    @GET("alpha/{tld}")
+    suspend fun getDetails(@Path("alpha") tld: String): Response<Country>
 
 }

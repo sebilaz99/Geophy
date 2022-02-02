@@ -24,9 +24,6 @@
         <action
             android:id="@+id/action_galleryFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <argument
-            android:name="Country"
-            app:argType="com.example.artgallery.model.Country" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -36,5 +33,8 @@
         <action
             android:id="@+id/action_detailsFragment_to_galleryFragment"
             app:destination="@id/galleryFragment" />
+        <argument
+            android:name="country"
+            app:argType="com.example.artgallery.model.Country" />
     </fragment>
 </navigation>

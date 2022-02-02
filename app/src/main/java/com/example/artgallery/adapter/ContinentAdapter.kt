@@ -35,20 +35,7 @@ class ContinentAdapter(var context: Context, var continentList: ArrayList<Contin
         image.setImageResource(continent.image)
         name.text = continent.name
 
-//        view.setOnClickListener {
-//            View.OnClickListener {
-//                if (position == 0) {
-//                    val action = it.context as AppCompatActivity
-//
-//                    val regionFragment = RegionFragment()
-//                    action.supportFragmentManager.beginTransaction()
-//                        .replace(R.id.mainConstraint, regionFragment)
-//                        .addToBackStack(null)
-//                        .commit()
-//                }
-//            }
-//
-//        }
+
 
         return view
     }
