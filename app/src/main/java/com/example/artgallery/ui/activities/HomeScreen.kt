@@ -1,12 +1,11 @@
 package com.example.artgallery.ui.activities
 
-import android.app.PendingIntent.getActivity
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
-import android.widget.GridView
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.example.artgallery.R
+
 
 class HomeScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,4 +18,5 @@ class HomeScreen : AppCompatActivity() {
         )
         window.statusBarColor = resources.getColor(android.R.color.transparent)
     }
+
 }
