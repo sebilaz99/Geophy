@@ -14,9 +14,30 @@ class RegionRepository
 @Inject
 constructor(private val apiService: ApiService) {
 
+
     suspend fun getEurope(): Response<List<Country>> = withContext(Dispatchers.IO) {
-        val departments = apiService.getEurope()
-        departments
+        val countries = apiService.getEurope()
+        countries
+    }
+
+    suspend fun getAmericas(): Response<List<Country>> = withContext(Dispatchers.IO) {
+        val countries = apiService.getAmericas()
+        countries
+    }
+
+    suspend fun getAsia(): Response<List<Country>> = withContext(Dispatchers.IO) {
+        val countries = apiService.getAsia()
+        countries
+    }
+
+    suspend fun getAfrica(): Response<List<Country>> = withContext(Dispatchers.IO) {
+        val countries = apiService.getAfrica()
+        countries
+    }
+
+    suspend fun getOceania(): Response<List<Country>> = withContext(Dispatchers.IO) {
+        val countries = apiService.getOceania()
+        countries
     }
 
 }

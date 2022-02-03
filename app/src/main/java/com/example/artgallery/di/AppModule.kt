@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -43,11 +44,11 @@ object AppModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun providesApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
-    }
+//    @Provides
+//    @Singleton
+//    fun providesApiService(retrofit: Retrofit): ApiService {
+//        return retrofit.create(ApiService::class.java)
+//    }
 
     @Provides
     fun providesService(): ApiService {

@@ -5,9 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
@@ -21,15 +25,16 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Named
 
-
+@AndroidEntryPoint
 class RegionFragment : Fragment(R.layout.fragment_region) {
 
     private lateinit var regionAdapter: RegionAdapter
 
     private lateinit var rv: RecyclerView
 
-    @Inject
-    lateinit var vm: RegionVM
+    val vm: RegionVM by viewModels()
+
+    val args: RegionFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -54,18 +59,37 @@ class RegionFragment : Fragment(R.layout.fragment_region) {
 
         setupRV()
 
-        vm.countryResp.observe(requireActivity(), { response ->
-            regionAdapter.countries = response
-        })
+        val regionName = view.findViewById<TextView>(R.id.textView)
 
-        animation.visibility = LottieAnimationView.INVISIBLE
+        val region = args.continent
+
+        regionName.text = region
 
 
-        val backBtn = view.findViewById<AppCompatButton>(R.id.backButton)
+        when (region) {
+            "Europe" -> vm.europeResp.observe(requireActivity()) { response ->
+                regionAdapter.countries = response
+            }
 
-        backBtn?.setOnClickListener {
-            switchFragment(HomeFragment())
+            "Asia" -> vm.asiaResp.observe(requireActivity()) { response ->
+                regionAdapter.countries = response
+            }
+
+            "Americas" -> vm.americasResp.observe(requireActivity()) { response ->
+                regionAdapter.countries = response
+            }
+
+            "Africa" -> vm.africaResp.observe(requireActivity()) { response ->
+                regionAdapter.countries = response
+            }
+
+            "Oceania" -> vm.oceaniaResp.observe(requireActivity()) { response ->
+                regionAdapter.countries = response
+            }
         }
+
+
+        animation.visibility = LottieAnimationView.GONE
 
     }
 
@@ -76,7 +100,5 @@ class RegionFragment : Fragment(R.layout.fragment_region) {
     }
 
 
-    private fun switchFragment(fragment: Fragment) {
-        fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView, fragment)?.commit()
-    }
+
 }
