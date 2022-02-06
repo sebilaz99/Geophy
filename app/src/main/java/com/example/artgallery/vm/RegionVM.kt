@@ -14,6 +14,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.example.artgallery.utils.Resource
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @HiltViewModel
 class RegionVM
@@ -28,6 +31,8 @@ constructor(
     val asiaResp: MutableLiveData<List<Country>> = MutableLiveData()
     val africaResp: MutableLiveData<List<Country>> = MutableLiveData()
     val oceaniaResp: MutableLiveData<List<Country>> = MutableLiveData()
+
+    val queryResp: MutableLiveData<List<Country>> = MutableLiveData()
 
     init {
         getEurope()

@@ -15,17 +15,18 @@ import javax.inject.Inject
 class CountryVM @Inject constructor(private val countryRepository: CountryRepository) :
     ViewModel() {
 
-
     private val detailsLiveData = MutableLiveData<Response<Country>>()
 
-    suspend fun getDetails(tld: String) {
+    var countryDetails : LiveData<Response<Country>> = detailsLiveData
+
+
+     fun getDetails(tld: String) {
         viewModelScope.launch {
             detailsLiveData.postValue(countryRepository.getDetails(tld))
         }
-
     }
 
-    var countryDetails : LiveData<Response<Country>> = detailsLiveData
+
 
 
 }

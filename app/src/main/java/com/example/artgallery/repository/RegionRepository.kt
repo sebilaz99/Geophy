@@ -5,6 +5,7 @@ import com.example.artgallery.model.Country
 import com.example.artgallery.network.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -39,5 +40,10 @@ constructor(private val apiService: ApiService) {
         val countries = apiService.getOceania()
         countries
     }
+
+    suspend fun getByName(name: String) : Call<Country> {
+        return apiService.getByName(name)
+    }
+
 
 }

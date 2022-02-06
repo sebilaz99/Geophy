@@ -2,6 +2,7 @@ package com.example.artgallery.adapter
 
 import android.view.LayoutInflater
 import android.view.OnReceiveContentListener
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -14,9 +15,7 @@ import com.example.artgallery.model.Country
 import com.example.artgallery.model.CountryItem
 import com.example.artgallery.ui.fragments.RegionFragmentDirections
 
-class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
-
-    private var onItemClicked: ((Country) -> Unit?)? = null
+class RegionAdapter() : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
 
 
     inner class RegionVH(val binding: CountryItemBinding) :
@@ -53,7 +52,8 @@ class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
     }
 
     override fun onBindViewHolder(holder: RegionVH, position: Int) {
-        val current = countries[position]
+        val current = differ.currentList[position]
+
         holder.binding.apply {
 
             flagTextView.text = current.name.common
@@ -64,24 +64,15 @@ class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
                 .into(flagImageView)
         }
 
-
-
         holder.itemView.setOnClickListener {
-            val action = RegionFragmentDirections.actionGalleryFragmentToDetailsFragment(current)
-            it.findNavController().navigate(action)
+            val direction = RegionFragmentDirections.actionGalleryFragmentToDetailsFragment(current)
+         it.findNavController().navigate(direction)
         }
-
 
     }
 
     override fun getItemCount(): Int {
         return countries.size
     }
-
-    private fun onItemClick(listener: (Country) -> Unit) {
-        onItemClicked = listener
-    }
-
-
 
 }

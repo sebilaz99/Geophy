@@ -24,8 +24,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var continentAdapter: ContinentAdapter
 
-    private var regionFragment = RegionFragment()
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,24 +42,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         gv.adapter = continentAdapter
 
-        val bg = view.findViewById<ConstraintLayout>(R.id.homeBackground)
-
-        val images = intArrayOf(
-            R.drawable.europe_img,
-            R.drawable.americas_img,
-            R.drawable.asia_img,
-            R.drawable.africa_img,
-            R.drawable.oceania_img
-        )
 
 
-        val layout = view.findViewById<RelativeLayout>(R.id.relativeLayout)
         gv.onItemLongClickListener =
             AdapterView.OnItemLongClickListener { parent, view, position, id ->
-                layout.apply {
-                    setBackgroundResource(images[position])
-                    Toast.makeText(view?.context, list!![position].name, Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(view?.context, list!![position].name, Toast.LENGTH_SHORT).show()
                 true
             }
 
