@@ -4,6 +4,7 @@ import com.example.artgallery.model.Country
 import dagger.Binds
 import dagger.Module
 import io.reactivex.rxjava3.core.Observable
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -27,6 +28,8 @@ interface ApiService {
     suspend fun getOceania(): Response<List<Country>>
 
     @GET("alpha/{tld}")
-    suspend fun getDetails(@Path("alpha") tld: String): Response<Country>
+    suspend fun getDetails(@Path("tld") tld: String): Response<Country>
 
+    @GET("name/{name}")
+    suspend fun getByName(@Path("name") name: String): Call<Country>
 }
